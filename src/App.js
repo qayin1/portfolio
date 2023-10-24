@@ -12,9 +12,13 @@ import {
   Stack,
   Divider,
   CheckboxIcon,
+  UnorderedList,
+  ListItem,
 } from '@chakra-ui/react';
 import { FaCss3, FaGit, FaHtml5, FaJs, FaNpm, FaReact } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
+import weatherapp from './assets/weatherapp.png';
+import weatherappmobile from './assets/weatherappmobile.png';
 import './style/global.css';
 import theme from './config/theme';
 import { Link as ScrollLink, animateScroll as scroll } from 'react-scroll';
@@ -121,6 +125,7 @@ function App() {
                   w={mobile ? '100px' : '200px'}
                   alt=""
                   marginTop={mobile ? '20px' : '50px'}
+                  marginBottom={mobile ? 'initial' : '20px'}
                 />
               </Box>
               <Stack
@@ -155,7 +160,15 @@ function App() {
                 >
                   Habilidades
                 </ScrollLink>
-                <Text cursor={'pointer'}>Projetos</Text>
+                <ScrollLink
+                  to="projetoSection"
+                  smooth={true}
+                  duration={500}
+                  offset={mobile ? -20 : -70}
+                  style={{ cursor: 'pointer' }}
+                >
+                  Projetos
+                </ScrollLink>
               </Stack>
             </Box>
           </>
@@ -276,6 +289,144 @@ function App() {
             <Text>Controle de versão: Git</Text>
             <Text>Bibliotecas: ChakraUi, yup</Text>
             <Text>Sites rápidos e responsivos.</Text>
+          </Stack>
+          <Stack id="projetoSection" minHeight="100vh">
+            <Divider
+              orientation="horizontal"
+              borderColor="#191970"
+              width="100%"
+            />
+            <Text
+              marginBlock={mobile ? '20px' : '30px'}
+              fontFamily="Roboto"
+              fontSize="40px"
+              fontWeight="bold"
+            >
+              Projetos
+            </Text>
+            <Stack maxWidth={'180px'}>
+              <Link
+                fontSize={'28px'}
+                w={'auto'}
+                textDecoration={'underline'}
+                color={'#0000ff'}
+                href="https://weather-app-seven-beta-35.vercel.app"
+                isExternal
+              >
+                Weather app
+              </Link>
+            </Stack>
+
+            <Text>
+              O Weather App é uma aplicação de previsão do tempo que permite aos
+              usuários obter informações meteorológicas detalhadas para qualquer
+              localização em tempo real. Com uma interface amigável e atraente,
+              os usuários podem inserir o nome de uma cidade e receber
+              informações sobre temperatura atual, condições climáticas,
+              temperatura mínima e máxima, além de uma descrição geral do clima.
+            </Text>
+            {mobile ? (
+              <>
+                <VStack>
+                  <Image
+                    borderRadius={'20px'}
+                    boxSize={'300px'}
+                    sizes="200px"
+                    objectFit="cover"
+                    src={weatherappmobile}
+                    alt="weather app print"
+                  />
+                  <Stack>
+                    <Text fontWeight={'bold'} fontSize={'20px'}>
+                      Recursos principais:
+                    </Text>
+                    <UnorderedList spacing={3}>
+                      <ListItem>
+                        Pesquisa por Cidade: Os usuários podem inserir o nome de
+                        qualquer cidade do mundo para obter informações
+                        meteorológicas atualizadas.
+                      </ListItem>
+                      <ListItem>
+                        Dados Precisos: O aplicativo se conecta a fontes
+                        confiáveis de dados meteorológicos para fornecer
+                        informações precisas e confiáveis.
+                      </ListItem>
+                      <ListItem>
+                        Interface Atraente: O design intuitivo e agradável
+                        tornam a experiência do usuário simples e atraente.
+                      </ListItem>
+                      <ListItem>
+                        Compatível com Dispositivos Móveis: O aplicativo é
+                        responsivo, funcionando bem em dispositivos móveis e
+                        computadores.
+                      </ListItem>
+                    </UnorderedList>
+                    <Text mt={'8px'} fontWeight={'bold'} fontSize={'20px'}>
+                      Tecnologias utilizadas:
+                    </Text>
+                    <UnorderedList spacing={3}>
+                      <ListItem>Linguagem de Programação: JavaScript</ListItem>
+                      <ListItem>
+                        Bibliotecas/Frameworks: React, Chakra UI
+                      </ListItem>
+                      <ListItem>API Externa: OpenWeatherMap API</ListItem>
+                      <ListItem>Outras Tecnologias: Git, GitHub</ListItem>
+                    </UnorderedList>
+                  </Stack>
+                </VStack>{' '}
+              </>
+            ) : (
+              <>
+                {' '}
+                <HStack>
+                  <Image
+                    borderRadius={'20px'}
+                    boxSize={'500px'}
+                    sizes="200px"
+                    objectFit="cover"
+                    src={weatherapp}
+                    alt="weather app print"
+                  />
+                  <Stack>
+                    <Text fontWeight={'bold'} fontSize={'20px'}>
+                      Recursos principais:
+                    </Text>
+                    <UnorderedList spacing={3}>
+                      <ListItem>
+                        Pesquisa por Cidade: Os usuários podem inserir o nome de
+                        qualquer cidade do mundo para obter informações
+                        meteorológicas atualizadas.
+                      </ListItem>
+                      <ListItem>
+                        Dados Precisos: O aplicativo se conecta a fontes
+                        confiáveis de dados meteorológicos para fornecer
+                        informações precisas e confiáveis.
+                      </ListItem>
+                      <ListItem>
+                        Interface Atraente: O design intuitivo e agradável
+                        tornam a experiência do usuário simples e atraente.
+                      </ListItem>
+                      <ListItem>
+                        Compatível com Dispositivos Móveis: O aplicativo é
+                        responsivo, funcionando bem em dispositivos móveis e
+                        computadores.
+                      </ListItem>
+                    </UnorderedList>
+                    <Text mt={'8px'} fontWeight={'bold'} fontSize={'20px'}>
+                      Tecnologias utilizadas:
+                    </Text>
+                    <UnorderedList spacing={3}>
+                      <ListItem>Linguagem de Programação: JavaScript</ListItem>
+                      <ListItem>
+                        Bibliotecas/Frameworks: React, Chakra UI
+                      </ListItem>
+                      <ListItem>API Externa: OpenWeatherMap API</ListItem>
+                      <ListItem>Outras Tecnologias: Git, GitHub</ListItem>
+                    </UnorderedList>
+                  </Stack>
+                </HStack>
+              </>
+            )}
           </Stack>
         </Box>
       </Box>
