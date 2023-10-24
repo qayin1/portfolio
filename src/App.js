@@ -175,6 +175,10 @@ function App() {
             <Text fontFamily="Roboto" fontWeight="bold" fontSize="30px">
               Carlos Alberto Gomes de Souza Junior
             </Text>
+            <Text fontFamily="Roboto" fontWeight="bold" fontSize="22px">
+              {' '}
+              PROGRAMADOR FRONTEND
+            </Text>
             <Text fontFamily="Roboto">
               Contato: (22) 974031962 / cain.dev@protonmail.com
             </Text>
