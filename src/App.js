@@ -52,7 +52,7 @@ function App() {
               color="white"
               width={mobile ? '100%' : '250px'}
               position="fixed"
-              height={mobile ? '150px' : '100%'}
+              height={mobile ? '200px' : '100%'}
               padding="20px"
               top="0"
               left="0"
@@ -77,7 +77,7 @@ function App() {
                   to="sobreSection"
                   smooth={true}
                   duration={500}
-                  offset={mobile ? -20 : -70}
+                  offset={mobile ? -160 : -70}
                   style={{ cursor: 'pointer' }}
                 >
                   Sobre
@@ -86,7 +86,7 @@ function App() {
                   to="experienciaSection"
                   smooth={true}
                   duration={500}
-                  offset={mobile ? -20 : -70}
+                  offset={mobile ? -160 : -70}
                   style={{ cursor: 'pointer' }}
                 >
                   Experiência
@@ -95,12 +95,20 @@ function App() {
                   to="habilidadeSection"
                   smooth={true}
                   duration={500}
-                  offset={mobile ? -20 : -70}
+                  offset={mobile ? -160 : -70}
                   style={{ cursor: 'pointer' }}
                 >
                   Habilidades
                 </ScrollLink>
-                <Text cursor={'pointer'}>Projetos</Text>
+                <ScrollLink
+                  to="projetoSection"
+                  smooth={true}
+                  duration={500}
+                  offset={mobile ? -160 : -70}
+                  style={{ cursor: 'pointer' }}
+                >
+                  Projetos
+                </ScrollLink>
               </Stack>
             </HStack>
           </>
@@ -128,6 +136,7 @@ function App() {
                   marginBottom={mobile ? 'initial' : '20px'}
                 />
               </Box>
+
               <Stack
                 marginTop={mobile ? '20px' : '0'}
                 alignContent={mobile ? 'center' : 'start'}
@@ -137,7 +146,7 @@ function App() {
                   to="sobreSection"
                   smooth={true}
                   duration={500}
-                  offset={mobile ? -20 : -70}
+                  offset={mobile ? 80 : -70}
                   style={{ cursor: 'pointer' }}
                 >
                   Sobre
@@ -146,7 +155,7 @@ function App() {
                   to="experienciaSection"
                   smooth={true}
                   duration={500}
-                  offset={mobile ? -20 : -70}
+                  offset={mobile ? 80 : -70}
                   style={{ cursor: 'pointer' }}
                 >
                   Experiência
@@ -155,7 +164,7 @@ function App() {
                   to="habilidadeSection"
                   smooth={true}
                   duration={500}
-                  offset={mobile ? -20 : -70}
+                  offset={mobile ? 80 : -70}
                   style={{ cursor: 'pointer' }}
                 >
                   Habilidades
@@ -164,7 +173,7 @@ function App() {
                   to="projetoSection"
                   smooth={true}
                   duration={500}
-                  offset={mobile ? -20 : -70}
+                  offset={mobile ? 80 : -70}
                   style={{ cursor: 'pointer' }}
                 >
                   Projetos
