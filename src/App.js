@@ -338,7 +338,7 @@ function App() {
               fontSize="40px"
               fontWeight="bold"
             >
-              {t('projetoscaps')}
+              {t('projetocaps')}
             </Text>
             <Stack maxWidth={'180px'}>
               <Link
