@@ -14,6 +14,7 @@ import {
   CheckboxIcon,
   UnorderedList,
   ListItem,
+  Select,
 } from '@chakra-ui/react';
 import { FaCss3, FaGit, FaHtml5, FaJs, FaNpm, FaReact } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
@@ -22,12 +23,22 @@ import weatherappmobile from './assets/weatherappmobile.png';
 import './style/global.css';
 import theme from './config/theme';
 import { Link as ScrollLink, animateScroll as scroll } from 'react-scroll';
+import { useTranslation } from 'react-i18next';
+import i18n from './i18n';
 
 import eu from './assets/eu.jpg';
 import IconHover from './components/IconHover';
 
 function App() {
   const [mobile, setMobile] = useState(false);
+  const { t, i18n } = useTranslation();
+  const [language, setLanguage] = useState('en');
+
+  const handleLanguageChange = event => {
+    const selectedLanguage = event.target.value;
+    setLanguage(selectedLanguage);
+    i18n.changeLanguage(selectedLanguage);
+  };
 
   useEffect(() => {
     function handleResize() {
@@ -59,14 +70,25 @@ function App() {
               justifyContent={'space-between'}
             >
               <Box>
-                <Image
-                  borderRadius="80px"
-                  src={eu}
-                  h={mobile ? '100px' : '200px'}
-                  w={mobile ? '100px' : '200px'}
-                  alt=""
-                  marginTop={mobile ? 'initial' : '50px'}
-                />
+                <HStack>
+                  <Image
+                    borderRadius="80px"
+                    src={eu}
+                    h={mobile ? '100px' : '200px'}
+                    w={mobile ? '100px' : '200px'}
+                    alt=""
+                    marginTop={mobile ? 'initial' : '50px'}
+                    mr={'12px'}
+                  />
+                  <Select value={language} onChange={handleLanguageChange}>
+                    <option style={{ color: '#000000' }} value="en">
+                      English
+                    </option>
+                    <option style={{ color: '#000000' }} value="pt">
+                      Português
+                    </option>
+                  </Select>
+                </HStack>
               </Box>
               <Stack
                 marginTop={mobile ? '0' : '0'}
@@ -80,7 +102,7 @@ function App() {
                   offset={mobile ? -160 : -70}
                   style={{ cursor: 'pointer' }}
                 >
-                  Sobre
+                  {t('sobre')}
                 </ScrollLink>
                 <ScrollLink
                   to="experienciaSection"
@@ -89,7 +111,7 @@ function App() {
                   offset={mobile ? -160 : -70}
                   style={{ cursor: 'pointer' }}
                 >
-                  Experiência
+                  {t('experiencia')}
                 </ScrollLink>
                 <ScrollLink
                   to="habilidadeSection"
@@ -98,7 +120,7 @@ function App() {
                   offset={mobile ? -160 : -70}
                   style={{ cursor: 'pointer' }}
                 >
-                  Habilidades
+                  {t('habilidades')}
                 </ScrollLink>
                 <ScrollLink
                   to="projetoSection"
@@ -107,7 +129,7 @@ function App() {
                   offset={mobile ? -160 : -70}
                   style={{ cursor: 'pointer' }}
                 >
-                  Projetos
+                  {t('projetos')}
                 </ScrollLink>
               </Stack>
             </HStack>
@@ -126,6 +148,14 @@ function App() {
               left="0"
             >
               <Box>
+                <Select value={language} onChange={handleLanguageChange}>
+                  <option style={{ color: '#000000' }} value="en">
+                    English
+                  </option>
+                  <option style={{ color: '#000000' }} value="pt">
+                    Português
+                  </option>
+                </Select>
                 <Image
                   borderRadius="80px"
                   src={eu}
@@ -149,7 +179,7 @@ function App() {
                   offset={mobile ? 80 : -70}
                   style={{ cursor: 'pointer' }}
                 >
-                  Sobre
+                  {t('sobre')}
                 </ScrollLink>
                 <ScrollLink
                   to="experienciaSection"
@@ -158,7 +188,7 @@ function App() {
                   offset={mobile ? 80 : -70}
                   style={{ cursor: 'pointer' }}
                 >
-                  Experiência
+                  {t('experiencia')}
                 </ScrollLink>
                 <ScrollLink
                   to="habilidadeSection"
@@ -167,7 +197,7 @@ function App() {
                   offset={mobile ? 80 : -70}
                   style={{ cursor: 'pointer' }}
                 >
-                  Habilidades
+                  {t('habilidades')}
                 </ScrollLink>
                 <ScrollLink
                   to="projetoSection"
@@ -176,7 +206,7 @@ function App() {
                   offset={mobile ? 80 : -70}
                   style={{ cursor: 'pointer' }}
                 >
-                  Projetos
+                  {t('projetos')}
                 </ScrollLink>
               </Stack>
             </Box>
@@ -199,7 +229,7 @@ function App() {
               fontWeight="bold"
               fontSize={mobile ? '20px' : '30px'}
             >
-              Carlos Alberto Gomes de Souza Junior
+              {t('nome')}
             </Text>
             <Text
               fontFamily="Roboto"
@@ -207,23 +237,17 @@ function App() {
               fontSize={mobile ? '16px' : '24px'}
               marginBottom={mobile ? '10px' : '20px'}
             >
-              PROGRAMADOR FRONTEND
+              {t('cargo')}
             </Text>
             <HStack>
               <Text fontWeight={'bold'} fontFamily="Roboto">
-                Contato:
+                {t('contato')}
               </Text>
               <Text>(22) 974031962 / cain.dev@protonmail.com</Text>
             </HStack>
 
             <Text fontFamily="Roboto" marginTop={mobile ? '10px' : '30px'}>
-              Com 24 anos de idade, minha jornada no desenvolvimento web teve
-              início no início de 2022, quando decidi explorar esse empolgante
-              mundo por conta própria. Rapidamente mergulhei nos estudos e, em
-              questão de meses, estava aplicando meus conhecimentos como
-              desenvolvedor front-end em uma startup. Essa experiência inicial
-              solidificou minha paixão pela programação e me impulsionou a
-              buscar um curso de tecnólogo em desenvolvimento full-stack.
+              {t('sobremim')}
             </Text>
           </Stack>
           <Stack id="experienciaSection" minHeight="100vh">
@@ -239,11 +263,11 @@ function App() {
               fontSize="40px"
               fontWeight="bold"
             >
-              EXPERIÊNCIA
+              {t('experienciacaps')}
             </Text>
 
             <Text fontFamily="Roboto" fontSize="25px" fontWeight="bold">
-              Freelance para uma startup
+              {t('tipodetrabalho')}
             </Text>
 
             <Text
@@ -252,16 +276,11 @@ function App() {
               fontSize="20px"
               marginBottom={mobile ? '6px' : '14px'}
             >
-              Desenvolvedor FrontEnd
+              {t('cargodotrabalho')}
             </Text>
 
             <Text marginBottom={mobile ? '4px' : '6px'}>
-              Como desenvolvedor FrontEnd, transformei designs do Figma em
-              aplicações web funcionais. Minhas responsabilidades incluíram o
-              desenvolvimento de formulários, garantindo a responsividade e
-              implementando validações com Yup. Aprimorei minhas habilidades em
-              JavaScript, aprofundando meu conhecimento em hooks, como useState
-              e useEffect.
+              {t('descriçaodotrabalho')}
             </Text>
             <Text>07/2022 - 03/2023</Text>
           </Stack>
@@ -277,7 +296,7 @@ function App() {
               fontSize="40px"
               fontWeight="bold"
             >
-              HABILIDADES
+              {t('habilidadecaps')}
             </Text>
             <Text
               marginBottom={mobile ? '4px' : '6px'}
@@ -285,7 +304,7 @@ function App() {
               fontSize="25px"
               fontWeight="bold"
             >
-              Linguagens de programação e ferramentas:
+              {t('ferramentas')}
             </Text>
             <Stack
               marginBottom={mobile ? '40px' : '80px'}
@@ -300,15 +319,12 @@ function App() {
               <IconHover icon={<FaNpm />} size="40px" />
             </Stack>
             <Text fontFamily="Roboto" fontSize="25px" fontWeight="bold">
-              Pontos fortes:
+              {t('fortes')}
             </Text>
-            <Text>
-              Interfaces/aplicações web usando React, HTML, CSS, JavaScript,
-              Typescript.
-            </Text>
-            <Text>Controle de versão: Git</Text>
-            <Text>Bibliotecas: ChakraUi, yup</Text>
-            <Text>Sites rápidos e responsivos.</Text>
+            <Text>{t('interfaces')}</Text>
+            <Text>{t('versao')}</Text>
+            <Text>{t('bibliotecas')}</Text>
+            <Text>{t('responsivos')}</Text>
           </Stack>
           <Stack id="projetoSection" minHeight="100vh">
             <Divider
@@ -322,7 +338,7 @@ function App() {
               fontSize="40px"
               fontWeight="bold"
             >
-              Projetos
+              {t('projetoscaps')}
             </Text>
             <Stack maxWidth={'180px'}>
               <Link
@@ -337,14 +353,7 @@ function App() {
               </Link>
             </Stack>
 
-            <Text>
-              O Weather App é uma aplicação de previsão do tempo que permite aos
-              usuários obter informações meteorológicas detalhadas para qualquer
-              localização em tempo real. Com uma interface amigável e atraente,
-              os usuários podem inserir o nome de uma cidade e receber
-              informações sobre temperatura atual, condições climáticas,
-              temperatura mínima e máxima, além de uma descrição geral do clima.
-            </Text>
+            <Text>{t('descriçaoweather')}</Text>
             {mobile ? (
               <>
                 <VStack>
@@ -358,39 +367,22 @@ function App() {
                   />
                   <Stack>
                     <Text fontWeight={'bold'} fontSize={'20px'}>
-                      Recursos principais:
+                      {t('recursoprincipal')}
                     </Text>
                     <UnorderedList spacing={3}>
-                      <ListItem>
-                        Pesquisa por Cidade: Os usuários podem inserir o nome de
-                        qualquer cidade do mundo para obter informações
-                        meteorológicas atualizadas.
-                      </ListItem>
-                      <ListItem>
-                        Dados Precisos: O aplicativo se conecta a fontes
-                        confiáveis de dados meteorológicos para fornecer
-                        informações precisas e confiáveis.
-                      </ListItem>
-                      <ListItem>
-                        Interface Atraente: O design intuitivo e agradável
-                        tornam a experiência do usuário simples e atraente.
-                      </ListItem>
-                      <ListItem>
-                        Compatível com Dispositivos Móveis: O aplicativo é
-                        responsivo, funcionando bem em dispositivos móveis e
-                        computadores.
-                      </ListItem>
+                      <ListItem>{t('lista1')}</ListItem>
+                      <ListItem>{t('lista2')}</ListItem>
+                      <ListItem>{t('lista3')}</ListItem>
+                      <ListItem>{t('lista4')}</ListItem>
                     </UnorderedList>
                     <Text mt={'8px'} fontWeight={'bold'} fontSize={'20px'}>
-                      Tecnologias utilizadas:
+                      {t('tecnologias')}
                     </Text>
                     <UnorderedList spacing={3}>
-                      <ListItem>Linguagem de Programação: JavaScript</ListItem>
-                      <ListItem>
-                        Bibliotecas/Frameworks: React, Chakra UI
-                      </ListItem>
-                      <ListItem>API Externa: OpenWeatherMap API</ListItem>
-                      <ListItem>Outras Tecnologias: Git, GitHub</ListItem>
+                      <ListItem>{t('linguagem')}</ListItem>
+                      <ListItem>{t('frameworks')}</ListItem>
+                      <ListItem>{t('api')}</ListItem>
+                      <ListItem>{t('outros')}</ListItem>
                     </UnorderedList>
                   </Stack>
                 </VStack>{' '}
@@ -409,39 +401,22 @@ function App() {
                   />
                   <Stack>
                     <Text fontWeight={'bold'} fontSize={'20px'}>
-                      Recursos principais:
+                      {t('recursoprincipal')}
                     </Text>
                     <UnorderedList spacing={3}>
-                      <ListItem>
-                        Pesquisa por Cidade: Os usuários podem inserir o nome de
-                        qualquer cidade do mundo para obter informações
-                        meteorológicas atualizadas.
-                      </ListItem>
-                      <ListItem>
-                        Dados Precisos: O aplicativo se conecta a fontes
-                        confiáveis de dados meteorológicos para fornecer
-                        informações precisas e confiáveis.
-                      </ListItem>
-                      <ListItem>
-                        Interface Atraente: O design intuitivo e agradável
-                        tornam a experiência do usuário simples e atraente.
-                      </ListItem>
-                      <ListItem>
-                        Compatível com Dispositivos Móveis: O aplicativo é
-                        responsivo, funcionando bem em dispositivos móveis e
-                        computadores.
-                      </ListItem>
+                      <ListItem>{t('lista1')}</ListItem>
+                      <ListItem>{t('lista2')}</ListItem>
+                      <ListItem>{t('lista3')}</ListItem>
+                      <ListItem>{t('lista4')}</ListItem>
                     </UnorderedList>
                     <Text mt={'8px'} fontWeight={'bold'} fontSize={'20px'}>
-                      Tecnologias utilizadas:
+                      {t('tecnologias')}
                     </Text>
                     <UnorderedList spacing={3}>
-                      <ListItem>Linguagem de Programação: JavaScript</ListItem>
-                      <ListItem>
-                        Bibliotecas/Frameworks: React, Chakra UI
-                      </ListItem>
-                      <ListItem>API Externa: OpenWeatherMap API</ListItem>
-                      <ListItem>Outras Tecnologias: Git, GitHub</ListItem>
+                      <ListItem>{t('linguagem')}</ListItem>
+                      <ListItem>{t('frameworks')}</ListItem>
+                      <ListItem>{t('api')}</ListItem>
+                      <ListItem>{t('outros')}</ListItem>
                     </UnorderedList>
                   </Stack>
                 </HStack>
