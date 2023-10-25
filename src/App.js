@@ -51,9 +51,9 @@ function App() {
               bg="#191970"
               color="white"
               width={mobile ? '100%' : '250px'}
-              position="fixed"
-              height={mobile ? '200px' : '100%'}
-              padding="20px"
+              height={mobile ? '140px' : '100%'}
+              position={'fixed'}
+              paddingInline={'20px'}
               top="0"
               left="0"
               justifyContent={'space-between'}
@@ -65,11 +65,11 @@ function App() {
                   h={mobile ? '100px' : '200px'}
                   w={mobile ? '100px' : '200px'}
                   alt=""
-                  marginTop={mobile ? '20px' : '50px'}
+                  marginTop={mobile ? 'initial' : '50px'}
                 />
               </Box>
               <Stack
-                marginTop={mobile ? '20px' : '0'}
+                marginTop={mobile ? '0' : '0'}
                 alignContent={mobile ? 'center' : 'start'}
                 alignItems={mobile ? 'center' : 'start'}
               >
@@ -194,18 +194,29 @@ function App() {
             justifyContent={mobile ? 'center' : 'center'}
             minHeight="100vh"
           >
-            <Text fontFamily="Roboto" fontWeight="bold" fontSize="30px">
+            <Text
+              fontFamily="Roboto"
+              fontWeight="bold"
+              fontSize={mobile ? '20px' : '30px'}
+            >
               Carlos Alberto Gomes de Souza Junior
             </Text>
-            <Text fontFamily="Roboto" fontWeight="bold" fontSize="22px">
-              {' '}
+            <Text
+              fontFamily="Roboto"
+              fontWeight="bold"
+              fontSize={mobile ? '16px' : '24px'}
+              marginBottom={mobile ? '10px' : '20px'}
+            >
               PROGRAMADOR FRONTEND
             </Text>
-            <Text fontFamily="Roboto">
-              Contato: (22) 974031962 / cain.dev@protonmail.com
-            </Text>
+            <HStack>
+              <Text fontWeight={'bold'} fontFamily="Roboto">
+                Contato:
+              </Text>
+              <Text>(22) 974031962 / cain.dev@protonmail.com</Text>
+            </HStack>
 
-            <Text fontFamily="Roboto" marginTop={mobile ? '20px' : '30px'}>
+            <Text fontFamily="Roboto" marginTop={mobile ? '10px' : '30px'}>
               Com 24 anos de idade, minha jornada no desenvolvimento web teve
               início no início de 2022, quando decidi explorar esse empolgante
               mundo por conta própria. Rapidamente mergulhei nos estudos e, em
